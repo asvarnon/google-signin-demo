@@ -14846,8 +14846,17 @@ var googleSignIn = function googleSignIn() {
   });
 };
 
+var googleSignOut = function googleSignOut() {
+  _app.default.auth().signOut().then(function () {
+    console.log("User Successfully Signed out");
+  }).catch(function (error) {
+    return console.error("There was an error logging out: ", error);
+  });
+};
+
 module.exports = {
-  googleSignIn: googleSignIn
+  googleSignIn: googleSignIn,
+  googleSignOut: googleSignOut
 };
 },{"firebase/app":"../node_modules/firebase/app/dist/index.esm.js","firebase/auth":"../node_modules/firebase/auth/dist/index.esm.js"}],"scripts/index.js":[function(require,module,exports) {
 "use strict";
@@ -14859,6 +14868,7 @@ var _util = require("./util");
 var _firebaseAuthentication = require("./firebase/firebaseAuthentication");
 
 (0, _util.clickHandler)("signin-google", _firebaseAuthentication.googleSignIn);
+(0, _util.clickHandler)(("app-signout", (0, _firebaseAuthentication.googleSignOut)()));
 },{"./firebase/firebaseConfig":"scripts/firebase/firebaseConfig.js","./util":"scripts/util.js","./firebase/firebaseAuthentication":"scripts/firebase/firebaseAuthentication.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -14887,7 +14897,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52715" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54129" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
